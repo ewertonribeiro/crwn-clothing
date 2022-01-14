@@ -22,6 +22,9 @@ console.log(this.state)
 render(){
 
 return(
+<>
+
+
 <div className="Shop-Page">
 
     {
@@ -31,6 +34,7 @@ return(
     }
 
 </div>
+</>
 )
 }
 

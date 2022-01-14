@@ -1,0 +1,85 @@
+
+
+@mixin shrink {
+    transform:translateY(-14px);
+    font-size: 1rem;
+    color:black;
+}
+
+
+.login-form-container{
+        display:flex;
+        flex-direction: column;
+        flex:1;
+        gap: 2rem;
+        .form-text-container{
+            h2{
+                font-size: 2rem;
+            }
+            span{
+                color:#777;
+            }
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            width:80%;
+            .login-input-group{
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                >input{
+                border:none;
+                border-bottom: 1px solid #000;
+                padding: 1rem;
+                font-size: 1.3rem;
+                &:focus{
+                    outline: none;
+
+                }
+
+
+                &:focus ~ .login-email-label{
+                    @include shrink();
+                }
+
+
+
+                }
+
+                >label{
+                transform: translateY(14px);
+                transition:300ms ease all;
+                font-size: 1.3rem;
+
+
+                &.shrink{
+                    @include shrink();
+                }
+
+                }
+
+
+
+            }
+
+
+                .login-buttons-container{
+
+                display: flex;
+                gap: 2rem;
+                margin-top: 2rem;
+
+
+
+
+            }
+        }
+
+
+    }
+
+
+
