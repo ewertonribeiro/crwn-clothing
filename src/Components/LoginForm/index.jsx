@@ -1,6 +1,11 @@
 import './style.scss'
 import LoginButton from '../Buttons/Login'
-import GoogleButton from '../Buttons/Google'
+import GoogleButton from '../Buttons/Google';
+
+
+
+
+
 export default function LoginForm(){
 
 return(
@@ -20,7 +25,7 @@ return(
             </div>
              <div className='login-buttons-container'>
 
-                 <LoginButton/>
+                 <LoginButton text="SIGN IN"/>
                  <GoogleButton/>
             </div>
 

@@ -2,12 +2,12 @@ import './style.scss'
 
 
 
-export default function loginButton(){
+export default function loginButton({text}){
 
 
 return(
 
-<button type="submit" className="login-btn">SIGN IN</button>
+<button type="submit" className="login-btn">{text}</button>
 
 
 )
