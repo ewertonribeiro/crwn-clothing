@@ -1,5 +1,5 @@
 import {initializeApp} from 'firebase/app';
-import {getAuth , GoogleAuthProvider , signInWithPopup , signOut} from 'firebase/auth';
+import {getAuth , GoogleAuthProvider , signInWithPopup , signOut , createUserWithEmailAndPassword , signInWithEmailAndPassword} from 'firebase/auth';
 
 
 const firebaseConfig = {
@@ -19,4 +19,4 @@ const provider = new GoogleAuthProvider();
 
 
 
-export {app , auth , provider , signInWithPopup , signOut}
+export {app , auth , provider , signInWithPopup , signOut , createUserWithEmailAndPassword , signInWithEmailAndPassword}
