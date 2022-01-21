@@ -1,19 +1,34 @@
 import './style.scss';
+import CustomButton from '../Buttons/Login'
+import { useDispatch } from 'react-redux';
+import { addItemTocart } from '../../Redux/Reducers/Cart/cart-reducer';
 
 
-export default function CollectionItem({name , imageUrl , price}){
+
+export default function CollectionItem(props){
+
+const dispatch = useDispatch();
+
+function AddToCart(){
+
+dispatch(addItemTocart(props));
+
+
+}
 
 return(
 <div className="collectionItem">
 
     <div
     className='img'
-    style={{backgroundImage:`url(${imageUrl})`}}
-    />
+    style={{backgroundImage:`url(${props.imageUrl})`}}
+/>
+
+    <CustomButton text="ADD TO CART" addToCart={AddToCart}/>
 
     <div className='collectionFooter'>
-      <span className='name'>{name}</span>
-      <span className='price'>{price}</span>
+      <span className='name'>{props.name}</span>
+      <span className='price'>{props.price}</span>
     </div>
 
 </div>

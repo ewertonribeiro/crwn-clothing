@@ -14,9 +14,10 @@
         gap: 2rem;
         .form-text-container{
             h2{
-                font-size: 2rem;
+                font-size: 3rem;
             }
             span{
+                font-size: 1.8rem;
                 color:#777;
             }
         }
@@ -34,7 +35,7 @@
                 border:none;
                 border-bottom: 1px solid #000;
                 padding: 1rem;
-                font-size: 1.3rem;
+                font-size: 2rem;
                 &:focus{
                     outline: none;
 
@@ -52,7 +53,7 @@
                 >label{
                 transform: translateY(14px);
                 transition:300ms ease all;
-                font-size: 1.3rem;
+                font-size: 1.8rem;
 
 
                 &.shrink{

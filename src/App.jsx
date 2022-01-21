@@ -1,16 +1,58 @@
 import Routes from './Routes/Routes';
 import Header from './Components/Header';
 import {BrowserRouter} from 'react-router-dom'
-import {Auth} from './Contexts/SessionContext'
+import { useEffect } from 'react';
+import { auth } from './Services/firebase';
+import { setUser } from './Redux/Reducers/User/user-reducer';
+import { useDispatch} from 'react-redux';
+
 function App() {
+
+const dispatch = useDispatch();
+//const cart = useSelector(store=>store.cart.cartItems)
+
+useEffect(()=>{
+
+//console.log(cart)
+const unSubscribe = auth.onAuthStateChanged(user=>{
+
+
+
+if(user){
+
+const {displayName , uid , email} = user
+
+const newUser = {
+name:displayName,
+id:uid,
+email,
+}
+
+dispatch(setUser(newUser));
+
+
+}else{
+//throw new Error('Esta faltando informações da sua conta Goolgle')
+}
+
+})
+
+return ()=>{
+unSubscribe()
+}
+},[])
+
+
+
+
   return (
 <div className="App">
-    <Auth>
+
     <BrowserRouter>
         <Header/>
         <Routes/>
     </BrowserRouter>
-    </Auth>
+
     </div>
   );
 }

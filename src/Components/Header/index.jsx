@@ -1,16 +1,18 @@
 import './style.scss'
 import logo from '../../Assets/crown.svg';
 import { Link } from 'react-router-dom';
-import {useContext} from 'react';
-import {SessionContext} from '../../Contexts/SessionContext'
-import {signOut as SignOut, auth} from '../../Services/firebase';
-
-
-
+import { signOut as SignOut, auth } from '../../Services/firebase';
+import { useSelector , useDispatch } from 'react-redux';
+import { logOut } from '../../Redux/Reducers/User/user-reducer'
+import CartBag from '../CartBagIcon/index';
+import { Cart } from '../Cart'
+import { useState } from 'react';
 
 export default function Header(){
 
-const {user , setUser} = useContext(SessionContext);
+const user = useSelector( state => state.user.user)
+const dispatch = useDispatch();
+const [show,setShow] = useState(false);
 
 
 async function signOut(){
@@ -18,7 +20,7 @@ async function signOut(){
 try{
 await SignOut(auth);
 
-setUser(null);
+dispatch(logOut());
 alert("You are no longer logged")
 
 }catch(err){
@@ -31,6 +33,19 @@ alert(err.code)
 }
 
 
+function ShowCart(){
+
+switch (show) {
+        case true:
+        setShow(false)
+        break;
+
+        default:
+        setShow(true);
+
+}
+
+}
 
 return(
 
@@ -56,10 +71,14 @@ return(
         :
         <Link to="/signin" >SIGN IN</Link>
         }
+        <CartBag handleShow={ShowCart}  />
     </nav>
 
+    <Cart show={show}/>
     </div>
+
 
 </header>
 )
 }
+

@@ -2,15 +2,48 @@
   width: 22%;
   display: flex;
   flex-direction: column;
-  height: 350px;
+  height: 44rem;
   align-items: center;
+  cursor: pointer;
+  position: relative;
+  button{
+    position: absolute;
+    top: 70%;
+    width: 80%;
+    padding: 2rem;
+    display: none;
+    background-color: #ffff;
+    color: black;
+    opacity: .8;
+    &:hover{
+        background-color: black;
+        color: #ffff;
+        opacity: 1;
+    }
+  }
 
+  &:hover{
+      .img{
+        opacity: .8;
+
+      }
+      button{
+          display: block;
+
+      }
+
+
+  }
   .img {
     width: 100%;
     height: 95%;
     background-size: cover;
     background-position: center;
-    margin-bottom: 5px;
+    margin-bottom: .5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
   }
 
   .collectionFooter {

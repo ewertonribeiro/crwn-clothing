@@ -43,8 +43,8 @@
            }
 
            .content{
-               height: 90px;
-               padding: 10px 25px;
+               height: 9rem;
+               padding: 1rem 2.5rem;
                display: flex;
                flex-direction: column;
                align-items: center;
@@ -58,11 +58,12 @@
                    font-weight: bold;
                    margin-bottom: 6px;
                    color: #4a4a4a;
+                   font-size: 3rem;
                }
 
                .subtitle{
                    font-weight: lighter;
-                   font-size: 1rem;
+                   font-size: 1.7rem;
                }
            }
        }

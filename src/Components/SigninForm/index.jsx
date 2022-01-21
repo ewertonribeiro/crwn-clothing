@@ -1,12 +1,10 @@
 import './style.scss'
 import LoginButton from '../Buttons/Login'
-import { useFormik } from 'formik'
-import {useContext} from 'react';
-import {SessionContext} from '../../Contexts/SessionContext';
+import { useFormik } from 'formik';
 import { auth , createUserWithEmailAndPassword } from '../../Services/firebase';
 import { useNavigate } from 'react-router-dom';
-
-
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../Redux/Reducers/User/user-reducer';
 
 const validate = ({name,email,password,confirmpassword})=>{
 
@@ -44,11 +42,9 @@ return errors;
 
 export default function SignInForm(){
 
-const navigate = useNavigate()
 
-
-const {setUser} = useContext(SessionContext);
-
+const dispatch = useDispatch();
+const navigate = useNavigate();
 
 const formik = useFormik({
 initialValues:{
@@ -67,11 +63,13 @@ const newuser = await createUserWithEmailAndPassword(auth,values.email , values.
 
 newuser.displayName = values.name;
 
-setUser({
+const newUser = {
 name:newuser.displayName,
-email:values.email,
-id:newuser.user.uid
-})
+email:newuser.user.email,
+id:newuser.user.uid,
+}
+
+dispatch(setUser(newUser));
 
 navigate("/");
 
