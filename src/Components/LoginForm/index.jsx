@@ -1,5 +1,5 @@
-import './style.scss'
-import LoginButton from '../Buttons/Login'
+import './style.scss';
+import CustomButton from '../Buttons/CustomButton';
 import GoogleButton from '../Buttons/Google';
 import {useFormik} from 'formik';
 import { auth , signInWithEmailAndPassword } from '../../Services/firebase'
@@ -109,7 +109,7 @@ return(
             </div>
              <div className='login-buttons-container'>
 
-                 <LoginButton text="SIGN IN"/>
+                 <CustomButton text="SIGN IN"/>
                  <GoogleButton/>
             </div>
 

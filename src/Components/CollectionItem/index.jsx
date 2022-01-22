@@ -1,5 +1,5 @@
 import './style.scss';
-import CustomButton from '../Buttons/Login'
+import CustomButton from '../Buttons/CustomButton'
 import { useDispatch } from 'react-redux';
 import { addItemTocart } from '../../Redux/Reducers/Cart/cart-reducer';
 
@@ -24,7 +24,7 @@ return(
     style={{backgroundImage:`url(${props.imageUrl})`}}
 />
 
-    <CustomButton text="ADD TO CART" addToCart={AddToCart}/>
+    <CustomButton text="ADD TO CART" type="button" Click={AddToCart}/>
 
     <div className='collectionFooter'>
       <span className='name'>{props.name}</span>

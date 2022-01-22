@@ -1,5 +1,5 @@
 import './style.scss'
-import LoginButton from '../Buttons/Login'
+import CustomButton from '../Buttons/CustomButton'
 import { useFormik } from 'formik';
 import { auth , createUserWithEmailAndPassword } from '../../Services/firebase';
 import { useNavigate } from 'react-router-dom';
@@ -172,7 +172,7 @@ return(
 
              <div className='signin-buttons-container'>
 
-                 <LoginButton text="SIGN UP"/>
+                 <CustomButton text="SIGN UP"/>
 
             </div>
     </form>

@@ -6,13 +6,11 @@ import { useSelector , useDispatch } from 'react-redux';
 import { logOut } from '../../Redux/Reducers/User/user-reducer'
 import CartBag from '../CartBagIcon/index';
 import { Cart } from '../Cart'
-import { useState } from 'react';
 
 export default function Header(){
 
 const user = useSelector( state => state.user.user)
 const dispatch = useDispatch();
-const [show,setShow] = useState(false);
 
 
 async function signOut(){
@@ -32,20 +30,6 @@ alert(err.code)
 
 }
 
-
-function ShowCart(){
-
-switch (show) {
-        case true:
-        setShow(false)
-        break;
-
-        default:
-        setShow(true);
-
-}
-
-}
 
 return(
 
@@ -71,10 +55,10 @@ return(
         :
         <Link to="/signin" >SIGN IN</Link>
         }
-        <CartBag handleShow={ShowCart}  />
+        <CartBag   />
     </nav>
 
-    <Cart show={show}/>
+    <Cart />
     </div>
 
 

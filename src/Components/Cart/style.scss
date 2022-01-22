@@ -11,6 +11,11 @@
     right: 4rem;
     z-index: 5;
 
+    .cart-empty{
+    font-size: 1.8rem;
+    margin:7rem auto;
+
+    }
 
     &.hide{
         display: none;

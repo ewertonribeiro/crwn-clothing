@@ -7,7 +7,7 @@ import Sneakers from '../Pages/Sections/Sneakers'
 import Jackets from '../Pages/Sections/Jackets'
 import Shop from '../Pages/Shop';
 import SignIn from '../Pages/SigIn';
-
+import Checkout from '../Pages/Checkout';
 
 
 export default function Routes(){
@@ -20,6 +20,7 @@ return(
         <Route path="/" element={<Home/>} />
         <Route path="/signin" element={<SignIn/>} />
         <Route path="/shop" element={<Shop/>} />
+        <Route path="/checkout" element={<Checkout/>} />
         <Route path="/hats" element={<Hats/>} />
         <Route path="/jackets" element={<Jackets/>} />
         <Route path="/sneakers" element={<Sneakers/>} />
