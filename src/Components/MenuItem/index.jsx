@@ -1,13 +1,15 @@
 import './style.scss'
 import {useNavigate} from 'react-router-dom'
 
-export function MenuItem({link , image , size , title}){
+export function MenuItem({title , linkUrl , imageUrl , size}){
+
 
 const navigate = useNavigate()
 
+
 function HandleClick(){
 
-navigate(`/${link}`)
+navigate(`/${linkUrl}`)
 
 }
 
@@ -23,7 +25,7 @@ onClick={HandleClick}
 className="background-image"
 style = {
     {
-    backgroundImage:`url(${image})`
+    backgroundImage:`url(${imageUrl})`
     }
 }
 />

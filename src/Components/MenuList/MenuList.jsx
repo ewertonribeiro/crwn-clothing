@@ -17,10 +17,7 @@ return(
     session.map(session=>(
         <MenuItem
         key={session.id}
-        title={session.title}
-        image={session.imageUrl}
-        link={session.linkUrl}
-        size={session.size}
+        {...session}
         />
     )
     )

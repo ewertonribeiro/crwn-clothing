@@ -1,19 +1,26 @@
 import './style.scss';
 import CollectionItem from '../CollectionItem';
+import {useNavigate} from 'react-router-dom';
 
 
-export default function CollectionPreview({title,items}){
+export default function CollectionPreview({title , items , routeName}){
+
+const navigate = useNavigate();
 
 
+function goToSection(){
+
+navigate(`/shop/${routeName}`);
+
+}
 
 return(
 <div className="collectionPreview">
-
-    <h1>{title.toUpperCase()}</h1>
+    <h1 onClick={goToSection}>{title.toUpperCase()}</h1>
     <div className="preview">
 
         {
-        items.filter(item=>item.id<5).map(({id , ...rest})=>(
+        items.filter(item=>item.id<4).map(({id , ...rest})=>(
             <CollectionItem key={id} id={id} {...rest} />
         ))
         }

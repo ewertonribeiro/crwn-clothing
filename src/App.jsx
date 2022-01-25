@@ -4,7 +4,7 @@ import {BrowserRouter} from 'react-router-dom'
 import { useEffect } from 'react';
 import { auth } from './Services/firebase';
 import { setUser } from './Redux/Reducers/User/user-reducer';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function App() {
 
