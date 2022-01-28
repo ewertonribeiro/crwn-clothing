@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     margin: 10rem auto 0;
-
+    padding: 2rem;
     .checkout-header{
     width: 100%;
     padding: 1rem 0;
@@ -29,9 +29,15 @@
     }
 
     .total{
+        display: flex;
         margin-top: 3rem;
         margin-left: auto;
         font-size: 3.6rem;
     }
 
+}
+.stripe-container{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
 }

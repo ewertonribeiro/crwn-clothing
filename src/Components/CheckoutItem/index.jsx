@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { clearItemFromCart , incrementQuantity , decrementQuantity } from '../../Redux/Reducers/Cart/cart-reducer';
 
 
+
+
 export default function CheckoutItem(item){
 
 const {imageUrl , name , price , count} = item

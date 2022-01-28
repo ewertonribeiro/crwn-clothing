@@ -6,6 +6,9 @@ import { auth } from './Services/firebase';
 import { setUser } from './Redux/Reducers/User/user-reducer';
 import { useDispatch } from 'react-redux';
 
+
+
+
 function App() {
 
 const dispatch = useDispatch();
@@ -45,16 +48,20 @@ unSubscribe()
 
 
 
-  return (
+
+
+return (
+
 <div className="App">
 
-    <BrowserRouter>
-        <Header/>
-        <Routes/>
-    </BrowserRouter>
+ <BrowserRouter>
+         <Header/>
+         <Routes/>
+ </BrowserRouter>
 
-    </div>
+
+</div>
+
   );
 }
-
-export default App;
+    export default App;

@@ -3,6 +3,9 @@ import CheckoutItem from '../../Components/CheckoutItem';
 
 import { useSelector } from 'react-redux';
 
+import StripeButton from '../../Components/Buttons/StripeButton';
+
+
 
 export default function CheckoutPage(){
 
@@ -48,8 +51,15 @@ return(
 
 
     <div className="total" >
+
         <h3 >TOTAL ${Total}</h3>
     </div>
+
+    <StripeButton/>
+
+
+
+
 
 </div>
 )

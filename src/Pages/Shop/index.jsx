@@ -10,7 +10,6 @@ const [Collection,setCollection] = useState([]);
 useEffect(()=>{
 
 setCollection(CollectionData);
-
 },[])
 
 return(

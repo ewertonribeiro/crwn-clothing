@@ -1,0 +1,27 @@
+.stripe-container{
+    position: relative;
+
+}
+
+
+.stripe-button{
+    border: none;
+    cursor: pointer;
+    border-radius: 999px;
+    background-color: #3f6cf2;
+    color: #ffff;
+    padding:1.4rem;
+    transition: all .2s ease-in;
+    &.stripe-button:active{
+        transform: translateY(-2px);
+    }
+
+    &:hover{
+        transform: translateY(-1.3rem);
+
+    }
+}
+
+.disabled{
+    filter: brightness(0.8);
+}
