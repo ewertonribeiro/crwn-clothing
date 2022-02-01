@@ -29,15 +29,13 @@ alert("Your cart is empty");
 return
 }
 
-dispatch(handleShow());
-
 const {data} = await axios.post("http://localhost:5000",{amount:Total * 100});
 
 setOptions({
 clientSecret:data.client_secret
 })
 
-
+dispatch(handleShow());
 }
 
 return(

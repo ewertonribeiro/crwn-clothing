@@ -16,7 +16,7 @@ switch (state.show) {
 AddItemsToCart(cartItems,payload){
 
 
-const itemExist = cartItems.find(item=>item.id === payload.id);
+const itemExist = cartItems.find(item=>item.name === payload.name);
 
 switch(itemExist) {
 case undefined:
@@ -24,7 +24,7 @@ case undefined:
 return cartItems = [...cartItems , {...payload , count:1}]
 
 default:
-const newArray = cartItems.map(item=>item.id === payload.id ? {...item ,count:item.count+=1} : item);
+const newArray = cartItems.map(item=>item.name === payload.name ? {...item ,count:item.count+=1} : item);
 
 return newArray;
 

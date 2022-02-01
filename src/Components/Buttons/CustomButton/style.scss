@@ -1,16 +1,21 @@
-                .login-btn{
-                    background-color: #000;
-                    padding: 1.2rem;
-                    border-radius: 0;
-                    border: none;
-                    color:#fff;
-                    cursor: pointer;
-                    width: 13rem;
-                    font-size: 1.8rem;
-                    &:hover{
-                        background-color: #fff;
-                        color:black;
-                        border:2px solid #000;
+.login-btn{
+    background-color: #000;
+    padding: 1.2rem;
+    border-radius: 0;
+    border: none;
+    color:#fff;
+    cursor: pointer;
+    width: 13rem;
+    font-size: 1.8rem;
+    transition: all 1s ease-in;
+    &.paymentsucceed{
+        background-color:green;
 
-                    }
-                }
+    }
+
+    &:hover{
+        background-color: #fff;
+        color:black;
+        border:2px solid #000;
+            }
+        }

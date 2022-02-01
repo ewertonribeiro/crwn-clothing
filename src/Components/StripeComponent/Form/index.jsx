@@ -3,10 +3,7 @@ import '../style.scss'
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
-import {  useEffect } from 'react';
-
 import { useSelector } from 'react-redux';
-
 
 import PaymentForm from '../index.jsx'
 
@@ -20,19 +17,16 @@ const show = useSelector(store=>store.stripe.show);
 return(
 <div>
 {
-!show || !options
+!show
 ?
 ""
 :
 <div className="stripe-form-container">
-    {!options
-    ?
-    <h2>LOADING</h2>
-    :
+
     <Elements stripe={stripePromise} options={options}>
         <PaymentForm/>
     </Elements>
-    }
+
 
 
 </div>

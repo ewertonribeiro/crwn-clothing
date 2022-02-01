@@ -38,6 +38,9 @@ decrementQuantity(state,action){
 
 state.cartItems = CartUtils.decrement(state, action);
 
+},
+cleanCart(state){
+state.cartItems = [];
 }
 
 }
@@ -46,6 +49,6 @@ state.cartItems = CartUtils.decrement(state, action);
 
 
 
-export const { addItemTocart , handleShowCart , clearItemFromCart , incrementQuantity , decrementQuantity } = cartSlice.actions;
+export const { addItemTocart , handleShowCart , clearItemFromCart , incrementQuantity , decrementQuantity , cleanCart} = cartSlice.actions;
 
 export default cartSlice.reducer;

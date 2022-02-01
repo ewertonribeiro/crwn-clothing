@@ -2,16 +2,23 @@ import './style.scss'
 
 
 
-export default function CustomButton({text , type="submit" , Click}){
+export default function CustomButton({text , type="submit" , Click , disabled = false , payment}){
 
 return(
 
     <button
     type={type}
-    className="login-btn"
+    className={`${payment ? "paymentsucceed" : ""} login-btn`}
     onClick={Click}
+    disabled={disabled}
     >
-    {text}
+        {
+        !payment
+        ?
+        text
+        :
+        "Success!"
+        }
 
     </button>
 
