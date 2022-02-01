@@ -1,7 +1,7 @@
 import {useState } from "react";
 import {useDispatch , useSelector } from "react-redux";
 import {handleShow} from '../../../Redux/Reducers/Stripe/stripe-reducer';
-
+import { UseTotal } from '../../../Hooks/useTotal';
 
 import axios from "axios";
 
@@ -13,7 +13,7 @@ import "./style.scss";
 export default function StripeButton(){
 
 const CartItems = useSelector(store=>store.cart.cartItems);
-const Total = CartItems.map(item=>item.count*item.price).reduce((acumulated , item)=>acumulated += item ,0)
+const Total = UseTotal();
 
 
 const dispatch = useDispatch()

@@ -7,13 +7,14 @@ import { handleShow as handleShowStripe } from '../../Redux/Reducers/Stripe/stri
 import { cleanCart } from '../../Redux/Reducers/Cart/cart-reducer';
 import {useNavigate} from 'react-router-dom';
 
+import { UseTotal } from '../../Hooks/useTotal';
 import "./style.scss"
 import {useState} from 'react';
 
 export default function PaymentForm(){
 
 const CartItems = useSelector(store=>store.cart.cartItems);
-const Total = CartItems.map(item=>item.count*item.price).reduce((acumulated , item)=>acumulated += item ,0)
+const Total = UseTotal();
 
 const [payment,setPayment] = useState(false);
 

@@ -5,15 +5,13 @@ import { useSelector } from 'react-redux';
 
 import StripeButton from '../../Components/Buttons/StripeButton';
 
-
+import { UseTotal } from '../../Hooks/useTotal';
 
 export default function CheckoutPage(){
 
 const CartItems = useSelector(store=>store.cart.cartItems);
 
-const Total = CartItems.map(item=>item.count*item.price).reduce((acumulated , item)=>acumulated += item ,0)
-
-
+const total = UseTotal();
 
 return(
 <div className="checkout-page" >
@@ -52,7 +50,7 @@ return(
 
     <div className="total" >
 
-        <h3 >TOTAL ${Total}</h3>
+        <h3 >TOTAL ${total}</h3>
     </div>
 
     <StripeButton/>
