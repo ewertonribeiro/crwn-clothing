@@ -1,54 +1,48 @@
-import {useState } from "react";
-import {useDispatch , useSelector } from "react-redux";
-import {handleShow} from '../../../Redux/Reducers/Stripe/stripe-reducer';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleShow } from '../../../Redux/Reducers/Stripe/stripe-reducer';
 import { UseTotal } from '../../../Hooks/useTotal';
 
-import axios from "axios";
+import axios from 'axios';
 
-import FormStripe from "../../StripeComponent/Form";
+import FormStripe from '../../StripeComponent/Form';
 
+import { StripeBtn, StripeContainer } from './style.js';
 
-import "./style.scss";
+export default function StripeButton() {
+  const CartItems = useSelector((store) => store.cart.cartItems);
+  const Total = UseTotal();
 
-export default function StripeButton(){
+  const dispatch = useDispatch();
 
-const CartItems = useSelector(store=>store.cart.cartItems);
-const Total = UseTotal();
+  const [options, setOptions] = useState(null);
 
+  async function handleClick() {
+    if (CartItems.length <= 0) {
+      alert('Your cart is empty');
+      return;
+    }
 
-const dispatch = useDispatch()
+    const { data } = await axios.post('http://localhost:5000', {
+      amount: Total * 100,
+    });
 
-const [options,setOptions] = useState(null)
+    setOptions({
+      clientSecret: data.client_secret,
+    });
 
+    dispatch(handleShow());
+  }
 
-async function handleClick(){
+  return (
+    <StripeContainer>
+      {CartItems.length <= 0 || !options ? (
+        <div></div>
+      ) : (
+        <FormStripe options={options} />
+      )}
 
-if(CartItems.length<=0){
-
-alert("Your cart is empty");
-return
-}
-
-const {data} = await axios.post("http://localhost:5000",{amount:Total * 100});
-
-setOptions({
-clientSecret:data.client_secret
-})
-
-dispatch(handleShow());
-}
-
-return(
-
-
-<div className="stripe-container">
-    {CartItems.length<=0 || !options ? <div></div> : <FormStripe options={options}/>}
-
-
-    <button className="stripe-button"  onClick={handleClick}>Pay Now</button>
-
-
-</div>
-)
-
+      <StripeBtn onClick={handleClick}>Pay Now</StripeBtn>
+    </StripeContainer>
+  );
 }

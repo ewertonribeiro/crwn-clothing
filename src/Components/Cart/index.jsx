@@ -1,57 +1,42 @@
-import CustomButton from '../Buttons/CustomButton';
 import CartItem from '../CartItem';
 
 import { handleShowCart } from '../../Redux/Reducers/Cart/cart-reducer';
-import { useSelector , useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
 
+import { CartItens, CartContainer, Text } from './style';
+import CustomButton from '../Buttons/CustomButton';
 
-import './style.scss';
+export function Cart() {
+  const CartItems = useSelector((store) => store.cart.cartItems);
+  const show = useSelector((store) => store.cart.show);
+  const dispatch = useDispatch();
 
+  const navigate = useNavigate();
 
-export function Cart(){
+  function GoToCheckout() {
+    navigate('/checkout');
 
+    dispatch(handleShowCart());
+  }
 
-const CartItems = useSelector(store=>store.cart.cartItems);
-const show = useSelector(store=>store.cart.show);
-const dispatch = useDispatch();
+  return (
+    <CartContainer show={show}>
+      <CartItens className='cart-items'>
+        {CartItems.length > 0 ? (
+          CartItems.map((item) => <CartItem key={item.id} {...item} />)
+        ) : (
+          <Text className='cart-empty'>Your Cart is Empty!</Text>
+        )}
+      </CartItens>
 
-
-const navigate = useNavigate();
-
-
-function GoToCheckout(){
-
-navigate("/checkout");
-
-dispatch(handleShowCart());
-
-}
-
-
-return (
-
-<div className={`${!show ? "hide" : ""} cart`}>
-
-    <div className="cart-items">
-
-        {
-            CartItems.length >0
-            ?
-            CartItems.map(item=>(
-
-            <CartItem  key={item.id} {...item} />
-            ))
-            :
-            <span className="cart-empty" >Your Cart is Empty!</span>
-        }
-
-    </div>
-
-    <CustomButton text="GO TO CHECKOUT" type="button" Click={GoToCheckout}/>
-
-</div>
-
-);
+      <CustomButton
+        cart={true}
+        text='GO TO CHECKOUT'
+        type='button'
+        Click={GoToCheckout}
+      />
+    </CartContainer>
+  );
 }

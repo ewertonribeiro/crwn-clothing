@@ -1,64 +1,59 @@
-
 const CART_UTILS = {
+  ShowCart(state) {
+    switch (state.show) {
+      case true:
+        return false;
 
-ShowCart(state){
-switch (state.show) {
-    case true:
-           return false;
-
-
-    default:
+      default:
         return true;
-}
+    }
+  },
 
-},
+  AddItemsToCart(cartItems, payload) {
+    const itemExist = cartItems.find((item) => item.name === payload.name);
 
-AddItemsToCart(cartItems,payload){
+    switch (itemExist) {
+      case undefined:
+        return (cartItems = [...cartItems, { ...payload, count: 1 }]);
 
+      default:
+        const newArray = cartItems.map((item) =>
+          item.name === payload.name
+            ? { ...item, count: (item.count += 1) }
+            : item
+        );
 
-const itemExist = cartItems.find(item=>item.name === payload.name);
+        return newArray;
+    }
+  },
 
-switch(itemExist) {
-case undefined:
+  ClearItemFromCart(state, action) {
+    const index = state.cartItems.findIndex(
+      (item) => item.name === action.payload.name
+    );
 
-return cartItems = [...cartItems , {...payload , count:1}]
+    return index;
+  },
 
-default:
-const newArray = cartItems.map(item=>item.name === payload.name ? {...item ,count:item.count+=1} : item);
+  increment(state, action) {
+    const Increment = state.cartItems.map((item) =>
+      item.name === action.payload.name
+        ? { ...item, count: (item.count += 1) }
+        : item
+    );
 
-return newArray;
+    return Increment;
+  },
 
-}
+  decrement(state, action) {
+    const Decrement = state.cartItems.map((item) =>
+      item.name === action.payload.name
+        ? { ...item, count: (item.count -= 1) }
+        : item
+    );
 
-},
-
-ClearItemFromCart(state,action){
-
-const index = state.cartItems.findIndex(item=>item.name===action.payload.name)
-
-return index
-},
-
-increment(state,action){
-
-const Increment = state.cartItems.map(item=>item.name===action.payload.name ?{...item,count:item.count+=1} : item);
-
-return Increment;
-},
-
-decrement(state,action){
-
-
-const Decrement = state.cartItems.map(item=>item.name===action.payload.name ? {...item,count:item.count-=1} : item);
-
-return Decrement;
-}
-
-
-}
-
-
+    return Decrement;
+  },
+};
 
 export default CART_UTILS;
-
-

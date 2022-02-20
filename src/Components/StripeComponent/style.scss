@@ -1,32 +1,28 @@
-.stripe-form-container{
-    position: absolute;
-    right:-10rem ;
-    top: -40rem;
-    width: 40rem;
-    height: 52rem;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid black;
+.stripe-form-container {
+  position: absolute;
+  right: -10rem;
+  top: -60rem;
+  width: 40rem;
+  height: 52rem;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid black;
 }
 
+.form-stripe-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 4rem;
 
-.form-stripe-element{
+  .title-wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    gap: 4rem;
 
-    .title-wrapper{
-        display: flex;
-
-
-        .close-stripe-button{
-
-            font-size: 2rem;
-            cursor: pointer;
-            color: darkred;
-        }
+    .close-stripe-button {
+      font-size: 2rem;
+      cursor: pointer;
+      color: darkred;
     }
-
+  }
 }

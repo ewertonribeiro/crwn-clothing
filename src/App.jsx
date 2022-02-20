@@ -1,67 +1,44 @@
 import Routes from './Routes/Routes';
 import Header from './Components/Header';
-import {BrowserRouter} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 import { useEffect } from 'react';
 import { auth } from './Services/firebase';
 import { setUser } from './Redux/Reducers/User/user-reducer';
 import { useDispatch } from 'react-redux';
 
-
-
-
 function App() {
+  const dispatch = useDispatch();
 
-const dispatch = useDispatch();
-//const cart = useSelector(store=>store.cart.cartItems)
+  useEffect(() => {
+    //console.log(cart)
+    const unSubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        const { displayName, uid, email } = user;
 
-useEffect(()=>{
+        const newUser = {
+          name: displayName,
+          id: uid,
+          email,
+        };
 
-//console.log(cart)
-const unSubscribe = auth.onAuthStateChanged(user=>{
+        dispatch(setUser(newUser));
+      } else {
+        //throw new Error('Esta faltando informações da sua conta Goolgle')
+      }
+    });
 
+    return () => {
+      unSubscribe();
+    };
+  }, [dispatch]);
 
-
-if(user){
-
-const {displayName , uid , email} = user
-
-const newUser = {
-name:displayName,
-id:uid,
-email,
-}
-
-dispatch(setUser(newUser));
-
-
-}else{
-//throw new Error('Esta faltando informações da sua conta Goolgle')
-}
-
-})
-
-return ()=>{
-unSubscribe()
-}
-},[])
-
-
-
-
-
-
-return (
-
-<div className="App">
-
- <BrowserRouter>
-         <Header/>
-         <Routes/>
- </BrowserRouter>
-
-
-</div>
-
+  return (
+    <div className='App'>
+      <BrowserRouter>
+        <Header />
+        <Routes />
+      </BrowserRouter>
+    </div>
   );
 }
-    export default App;
+export default App;

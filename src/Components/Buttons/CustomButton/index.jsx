@@ -1,27 +1,15 @@
-import './style.scss'
+import { Button } from './style';
 
-
-
-export default function CustomButton({text , type="submit" , Click , disabled = false , payment}){
-
-return(
-
-    <button
-    type={type}
-    className={`${payment ? "paymentsucceed" : ""} login-btn`}
-    onClick={Click}
-    disabled={disabled}
-    >
-        {
-        !payment
-        ?
-        text
-        :
-        "Success!"
-        }
-
-    </button>
-
-
-)
+export default function CustomButton({
+  text,
+  type = 'submit',
+  Click,
+  disabled = false,
+  payment,
+}) {
+  return (
+    <Button type={type} onClick={Click} disabled={disabled}>
+      {!payment ? text : 'Success!'}
+    </Button>
+  );
 }

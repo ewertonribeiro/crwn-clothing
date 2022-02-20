@@ -1,182 +1,154 @@
-import './style.scss'
-import CustomButton from '../Buttons/CustomButton'
+import './style.scss';
+import CustomButton from '../Buttons/CustomButton';
 import { useFormik } from 'formik';
-import { auth , createUserWithEmailAndPassword } from '../../Services/firebase';
+import { auth, createUserWithEmailAndPassword } from '../../Services/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../Redux/Reducers/User/user-reducer';
 
-const validate = ({name,email,password,confirmpassword})=>{
+const validate = ({ name, email, password, confirmpassword }) => {
+  const errors = {};
 
-const errors = {};
+  if (!name) {
+    errors.name = 'You must Provide a DisplayName';
+  }
 
-if(!name){
+  if (!email) {
+    errors.email = 'You must provide a valid email';
+  }
 
-errors.name = "You must Provide a DisplayName";
+  if (!password || password.lenght < 6) {
+    errors.password =
+      'You must provide a password and it has to be at least 6 characters';
+  }
 
-}
+  if (!confirmpassword || confirmpassword !== password) {
+    errors.confirmpassword = 'The passwords do not match';
+  }
 
-if(!email){
+  return errors;
+};
 
-errors.email = "You must provide a valid email";
+export default function SignInForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-}
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: null,
+      confirmpassword: null,
+    },
 
-if(!password || password.lenght < 6){
+    validate,
 
-errors.password = "You must provide a password and it has to be at least 6 characters";
+    onSubmit: async (values) => {
+      try {
+        const newuser = await createUserWithEmailAndPassword(
+          auth,
+          values.email,
+          values.password
+        );
 
-}
+        newuser.displayName = values.name;
 
-if(!confirmpassword || confirmpassword !== password){
+        const newUser = {
+          name: newuser.displayName,
+          email: newuser.user.email,
+          id: newuser.user.uid,
+        };
 
-errors.confirmpassword = "The passwords do not match";
+        dispatch(setUser(newUser));
 
-}
+        navigate('/');
+      } catch (err) {
+        alert(err.message);
+      }
+    },
+  });
 
-return errors;
-
-}
-
-
-
-export default function SignInForm(){
-
-
-const dispatch = useDispatch();
-const navigate = useNavigate();
-
-const formik = useFormik({
-initialValues:{
-name:"",
-email:"",
-password:null,
-confirmpassword:null
-},
-
-validate,
-
-onSubmit:async values =>{
-
-try{
-const newuser = await createUserWithEmailAndPassword(auth,values.email , values.password)
-
-newuser.displayName = values.name;
-
-const newUser = {
-name:newuser.displayName,
-email:newuser.user.email,
-id:newuser.user.uid,
-}
-
-dispatch(setUser(newUser));
-
-navigate("/");
-
-}catch(err){
-
-alert(err.message)
-
-}
-
-
-
-
-}
-
-})
-
-
-
-
-
-return(
-<>
-<div className="signin-form-container">
-
-    <form className="signin-form" onSubmit={formik.handleSubmit}>
-        <div className="form-text-container">
+  return (
+    <>
+      <div className='signin-form-container'>
+        <form className='signin-form' onSubmit={formik.handleSubmit}>
+          <div className='form-text-container'>
             <h2>I do not have an account</h2>
             <span>Sign up with your email and password</span>
-        </div>
+          </div>
 
-        <div className="login-input-group">
-
-             <label htmlFor='display-name' className='display-name-label'>Display Name</label>
-             <input
-             className="display-name"
-             type="text"
-             id="name"
-             name="name"
-             onBlur={formik.handleBlur}
-             onChange={formik.handleChange}
-             value={formik.values.name}
-         />
-
-             {formik.touched.name && formik.errors.name ? <div className="errors">{formik.errors.name}</div> : undefined}
-
-         </div>
-
-         <div className="login-input-group">
-
-            <label htmlFor='signin-email'  className='signin-email-label'>Email</label>
+          <div className='login-input-group'>
+            <label htmlFor='display-name' className='display-name-label'>
+              Display Name
+            </label>
             <input
-            className="signin-email"
-            type="email"
-            id="email"
-            name="email"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.email}
-        />
+              className='display-name'
+              type='text'
+              id='name'
+              {...formik.getFieldProps('name')}
+            />
 
-            {formik.touched.email && formik.errors.email ? <div className="errors">{formik.errors.email}</div> : undefined}
+            {formik.touched.name && formik.errors.name ? (
+              <div className='errors'>{formik.errors.name}</div>
+            ) : undefined}
+          </div>
 
-        </div>
-
-        <div className="login-input-group">
-
-            <label htmlFor='signin-password' className='signin-password-label'>Senha</label>
+          <div className='login-input-group'>
+            <label htmlFor='signin-email' className='signin-email-label'>
+              Email
+            </label>
             <input
-            className="signin-password"
-            type="password"
-            id="password"
-            name="password"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.password}
+              className='signin-email'
+              type='email'
+              id='email'
+              {...formik.getFieldProps('email')}
+            />
 
-        />
+            {formik.touched.email && formik.errors.email ? (
+              <div className='errors'>{formik.errors.email}</div>
+            ) : undefined}
+          </div>
 
-            {formik.touched.password && formik.errors.password ? <div className="errors">{formik.errors.password}</div> : undefined}
-
-        </div>
-
-        <div className="login-input-group">
-
-            <label htmlFor='signin-confirm-password' className='signin-confirm-password-label'>Confirme a senha</label>
+          <div className='login-input-group'>
+            <label htmlFor='signin-password' className='signin-password-label'>
+              Senha
+            </label>
             <input
-            className="signin-confirm-password"
-            type="password"
-            id="confirmpassword"
-            name="confirmpassword"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.confirmpassword}
+              className='signin-password'
+              type='password'
+              id='password'
+              {...formik.getFieldProps('password')}
+            />
 
-        />
+            {formik.touched.password && formik.errors.password ? (
+              <div className='errors'>{formik.errors.password}</div>
+            ) : undefined}
+          </div>
 
-            {formik.touched.confirmpassword && formik.errors.confirmpassword ? <div className="errors">{formik.errors.confirmpassword}</div> : undefined}
+          <div className='login-input-group'>
+            <label
+              htmlFor='signin-confirm-password'
+              className='signin-confirm-password-label'
+            >
+              Confirme a senha
+            </label>
+            <input
+              className='signin-confirm-password'
+              type='password'
+              id='confirmpassword'
+              {...formik.getFieldProps('confirmpassword')}
+            />
 
-        </div>
+            {formik.touched.confirmpassword && formik.errors.confirmpassword ? (
+              <div className='errors'>{formik.errors.confirmpassword}</div>
+            ) : undefined}
+          </div>
 
-             <div className='signin-buttons-container'>
-
-                 <CustomButton text="SIGN UP"/>
-
-            </div>
-    </form>
-    </div>
-</>
-)
+          <div className='signin-buttons-container'>
+            <CustomButton text='SIGN UP' />
+          </div>
+        </form>
+      </div>
+    </>
+  );
 }

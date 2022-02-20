@@ -1,8 +1,10 @@
-.stripe-container {
-  position: relative;
-}
+import styled from 'styled-components';
 
-.stripe-button {
+export const StripeContainer = styled.div`
+  position: relative;
+`;
+
+export const StripeBtn = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 999px;
@@ -10,8 +12,7 @@
   color: #ffff;
   padding: 1.4rem;
   transition: all 0.2s ease-in;
-
   &:hover {
     transform: translateY(-1.3rem);
   }
-}
+`;

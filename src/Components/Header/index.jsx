@@ -1,68 +1,57 @@
-import './style.scss'
 import logo from '../../Assets/crown.svg';
 import { Link } from 'react-router-dom';
 import { signOut as SignOut, auth } from '../../Services/firebase';
-import { useSelector , useDispatch } from 'react-redux';
-import { logOut } from '../../Redux/Reducers/User/user-reducer'
+import { useSelector, useDispatch } from 'react-redux';
+import { logOut } from '../../Redux/Reducers/User/user-reducer';
 import CartBag from '../CartBagIcon/index';
-import { Cart } from '../Cart'
+import { Cart } from '../Cart';
 
-export default function Header(){
+import {
+  HeaderComponent,
+  HeaderContainer,
+  HeaderMenu,
+  MenuOption,
+} from './style.js';
 
-const user = useSelector( state => state.user.user)
-const dispatch = useDispatch();
+export default function Header() {
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 
+  async function signOut() {
+    try {
+      await SignOut(auth);
 
-async function signOut(){
+      dispatch(logOut());
+      alert('You are no longer logged');
+    } catch (err) {
+      alert(err.code);
+    }
+  }
 
-try{
-await SignOut(auth);
-
-dispatch(logOut());
-alert("You are no longer logged")
-
-}catch(err){
-
-alert(err.code)
-
-}
-
-
-}
-
-
-return(
-
-<header className="header">
-
-    <div className="header-container">
-
-        <div className="menu-container">
-            <Link to="/">
-
-                <img alt="Logo" src={logo} width={60} height={60}/>
-
-            </Link>
+  return (
+    <HeaderComponent>
+      <HeaderContainer>
+        <div>
+          <Link to='/'>
+            <img alt='Logo' src={logo} width={60} height={60} />
+          </Link>
         </div>
 
-    <nav className='menu'>
+        <HeaderMenu>
+          <MenuOption to='/shop'>SHOP</MenuOption>
+          <MenuOption to='#'>CONTACT</MenuOption>
+          {user ? (
+            <MenuOption to='#' onClick={signOut}>
+              SIGN OUT
+            </MenuOption>
+          ) : (
+            <MenuOption to='/signin'>SIGN IN</MenuOption>
+          )}
+          <CartBag />
+        </HeaderMenu>
 
-        <Link to='/shop' className="selected">SHOP</Link>
-        <Link to='#'>CONTACT</Link>
-        {
-        user ?
-        <Link to="#" onClick={signOut}>SIGN OUT</Link>
-        :
-        <Link to="/signin" >SIGN IN</Link>
-        }
-        <CartBag   />
-    </nav>
-
-    <Cart />
-    </div>
-
-
-</header>
-)
+        <Cart />
+      </HeaderContainer>
+    </HeaderComponent>
+  );
 }
-
