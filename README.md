@@ -8,7 +8,7 @@
 
 <h1 align="center">
     <img alt="Letmeask" src="https://user-images.githubusercontent.com/90481197/155023467-4c16c067-368c-47be-953e-8f4855135904.png" width="800" />
-  <img alt="Letmeask" src="https://user-images.githubusercontent.com/90481197/155023467-4c16c067-368c-47be-953e-8f4855135904.png" width="800" />
+  <img alt="Letmeask" src="https://user-images.githubusercontent.com/90481197/155032075-7ab40982-e082-45b8-8ac1-403bd72e09d0.png" width="800"/>
   <img alt="Letmeask" src="https://user-images.githubusercontent.com/90481197/155023467-4c16c067-368c-47be-953e-8f4855135904.png" width="800" />
 </h1>
 
