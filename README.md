@@ -3,13 +3,13 @@
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/github/stars/rocketseat-education/nlw-06-reactjs?label=stars&message=MIT&color=8257E5&labelColor=000000" alt="Stars">
-
-  <img  src="https://img.shields.io/static/v1?label=license&message=MIT&color=8257E5&labelColor=000000" alt="License">
+   <h1 color="darkgray" align="center">CRWN SHOP || E-COMMERCE</h1>
 </p>
 
 <h1 align="center">
-    <img alt="Letmeask" src="" />
+    <img alt="Letmeask" src="https://user-images.githubusercontent.com/90481197/155023467-4c16c067-368c-47be-953e-8f4855135904.png" width="800" />
+  <img alt="Letmeask" src="https://user-images.githubusercontent.com/90481197/155023467-4c16c067-368c-47be-953e-8f4855135904.png" width="800" />
+  <img alt="Letmeask" src="https://user-images.githubusercontent.com/90481197/155023467-4c16c067-368c-47be-953e-8f4855135904.png" width="800" />
 </h1>
 
 <br>
