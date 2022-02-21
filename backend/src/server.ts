@@ -1,6 +1,6 @@
 import express from 'express';
-import stripe from 'stripe';
 import cors from 'cors';
+import { Stripe } from './stripe/stripe';
 
 const server = express();
 
@@ -9,14 +9,6 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 server.use(cors());
-
-const Stripe = new stripe(
-  'sk_test_51KMJgWDs0RH8yZRdcSLht5LYqpTmzHK424Ej2uTt8p4Gdr24u0rS7rIUrftTkgLyqHZbgZ5luGmVM2tPqUqIZ9ph00qAEbepDQ',
-  {
-    apiVersion: '2020-08-27',
-    typescript: true,
-  }
-);
 
 const port = 5000;
 
