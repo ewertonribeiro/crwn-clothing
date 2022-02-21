@@ -25,7 +25,7 @@ export function Cart() {
     <CartContainer show={show}>
       <CartItens className='cart-items'>
         {CartItems.length > 0 ? (
-          CartItems.map((item) => <CartItem key={item.id} {...item} />)
+          CartItems.map((item) => <CartItem key={item.name} {...item} />)
         ) : (
           <Text className='cart-empty'>Your Cart is Empty!</Text>
         )}

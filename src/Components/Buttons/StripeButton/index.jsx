@@ -23,9 +23,12 @@ export default function StripeButton() {
       return;
     }
 
-    const { data } = await axios.post('http://localhost:5000', {
-      amount: Total * 100,
-    });
+    const { data } = await axios.post(
+      'https://crwn-clothing-backend-2.herokuapp.com',
+      {
+        amount: Total * 100,
+      }
+    );
 
     setOptions({
       clientSecret: data.client_secret,

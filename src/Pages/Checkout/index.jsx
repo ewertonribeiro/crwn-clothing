@@ -37,7 +37,7 @@ export default function CheckoutPage() {
       </div>
 
       {CartItems.map((cartItem) => (
-        <CheckoutItem key={cartItem.id} {...cartItem} />
+        <CheckoutItem key={cartItem.name} {...cartItem} />
       ))}
 
       <div className='total'>
