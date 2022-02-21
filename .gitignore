@@ -11,6 +11,9 @@
 # production
 /build
 
+#Backend
+/crw-clothing-backend
+
 # misc
 .DS_Store
 .env.local
