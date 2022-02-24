@@ -9,7 +9,7 @@
 <h1 align="center">
     <img alt="Crwn-clothing" src="https://user-images.githubusercontent.com/90481197/155023467-4c16c067-368c-47be-953e-8f4855135904.png" width="800" />
   <img alt="Crwn-clothing" src="https://user-images.githubusercontent.com/90481197/155032075-7ab40982-e082-45b8-8ac1-403bd72e09d0.png" width="800"/>
-  <img alt="Crwn-clothing" src="https://user-images.githubusercontent.com/90481197/155023467-4c16c067-368c-47be-953e-8f4855135904.png" width="800" />
+  <img alt="Crwn-clothing" src="https://user-images.githubusercontent.com/90481197/155528169-eaf0144c-f99e-4f1b-9b75-7c679b325b74.png" width="800" />
 </h1>
 
 <br>
@@ -59,7 +59,7 @@ $ npm run dev
 
 O app estará disponível no seu browser pelo endereço http://localhost:3000.
 
-Lembrando que será necessário criar uma conta no [Firebase](https://firebase.google.com/) para dispoibilizar o login!
+Lembrando que será necessário criar uma conta no [Firebase](https://firebase.google.com/) para dispoibilizar o sistema de autenticação!
 
 ## 💻 Projeto
 
